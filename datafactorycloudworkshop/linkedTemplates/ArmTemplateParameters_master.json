@@ -8,6 +8,9 @@
 		"integrationRuntime_bigdatagateway": {
 			"value": "bigdatagateway"
 		},
+		"AzureDatabricks_accessToken": {
+			"value": ""
+		},
 		"BlobStorageOutput_connectionString": {
 			"value": ""
 		},

@@ -12,6 +12,10 @@
 			"metadata": "Integration Runtime Name",
 			"defaultValue": "bigdatagateway"
 		},
+		"AzureDatabricks_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks'"
+		},
 		"BlobStorageOutput_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'BlobStorageOutput'"
@@ -61,6 +65,9 @@
 					},
 					"integrationRuntime_bigdatagateway": {
 						"value": "[parameters('integrationRuntime_bigdatagateway')]"
+					},
+					"AzureDatabricks_accessToken": {
+						"value": "[parameters('AzureDatabricks_accessToken')]"
 					},
 					"BlobStorageOutput_connectionString": {
 						"value": "[parameters('BlobStorageOutput_connectionString')]"
