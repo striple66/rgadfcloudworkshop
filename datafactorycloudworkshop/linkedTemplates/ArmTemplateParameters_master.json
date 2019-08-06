@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "datafactorycloudworkshop"
+		},
+		"integrationRuntime_bigdatagateway": {
+			"value": "bigdatagateway"
+		},
+		"BlobStorageOutput_connectionString": {
+			"value": ""
+		},
+		"OnPremServer_password": {
+			"value": ""
+		},
+		"OnPremServer_properties_typeProperties_host": {
+			"value": "C:\\data"
+		},
+		"OnPremServer_properties_typeProperties_userId": {
+			"value": "europe\\ragoetz@microsoft.com"
+		},
+		"Trigger_efz_properties_CopyOnPrem2AzurePipeline_parameters_windowStart": {
+			"value": "@trigger().scheduledTime"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

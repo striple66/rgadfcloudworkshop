@@ -1,0 +1,85 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory Name",
+			"defaultValue": "datafactorycloudworkshop"
+		},
+		"integrationRuntime_bigdatagateway": {
+			"type": "string",
+			"metadata": "Integration Runtime Name",
+			"defaultValue": "bigdatagateway"
+		},
+		"BlobStorageOutput_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'BlobStorageOutput'"
+		},
+		"OnPremServer_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'OnPremServer'"
+		},
+		"OnPremServer_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "C:\\data"
+		},
+		"OnPremServer_properties_typeProperties_userId": {
+			"type": "string",
+			"defaultValue": "europe\\ragoetz@microsoft.com"
+		},
+		"Trigger_efz_properties_CopyOnPrem2AzurePipeline_parameters_windowStart": {
+			"type": "string",
+			"defaultValue": "@trigger().scheduledTime"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas Token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"integrationRuntime_bigdatagateway": {
+						"value": "[parameters('integrationRuntime_bigdatagateway')]"
+					},
+					"BlobStorageOutput_connectionString": {
+						"value": "[parameters('BlobStorageOutput_connectionString')]"
+					},
+					"OnPremServer_password": {
+						"value": "[parameters('OnPremServer_password')]"
+					},
+					"OnPremServer_properties_typeProperties_host": {
+						"value": "[parameters('OnPremServer_properties_typeProperties_host')]"
+					},
+					"OnPremServer_properties_typeProperties_userId": {
+						"value": "[parameters('OnPremServer_properties_typeProperties_userId')]"
+					},
+					"Trigger_efz_properties_CopyOnPrem2AzurePipeline_parameters_windowStart": {
+						"value": "[parameters('Trigger_efz_properties_CopyOnPrem2AzurePipeline_parameters_windowStart')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
